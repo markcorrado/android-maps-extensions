@@ -136,6 +136,10 @@ public interface GoogleMap {
 
     void setOnInfoWindowClickListener(OnInfoWindowClickListener onInfoWindowClickListener);
 
+    void setOnInfoWindowLongClickListener(OnInfoWindowLongClickListener onInfoWindowLongClickListener);
+
+    void setOnPolygonClickListener(OnPolygonClickListener onPolygonClickListener);
+
     void setOnMapClickListener(OnMapClickListener onMapClickListener);
 
     void setOnMapLoadedCallback(OnMapLoadedCallback onMapLoadedCallback);
@@ -185,6 +189,16 @@ public interface GoogleMap {
     interface OnInfoWindowClickListener {
 
         void onInfoWindowClick(Marker marker);
+    }
+
+    interface OnInfoWindowLongClickListener {
+
+        void onInfoWindowLongClick(Marker marker);
+    }
+
+    interface OnPolygonClickListener extends com.google.android.gms.maps.GoogleMap.OnPolygonClickListener{
+
+        void onPolygonClick(Polygon polygon);
     }
 
     interface OnMapClickListener extends com.google.android.gms.maps.GoogleMap.OnMapClickListener {

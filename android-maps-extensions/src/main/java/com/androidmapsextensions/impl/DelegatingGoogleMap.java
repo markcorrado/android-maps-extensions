@@ -276,6 +276,24 @@ class DelegatingGoogleMap implements GoogleMap {
     }
 
     @Override
+    public void setOnInfoWindowLongClickListener(OnInfoWindowLongClickListener onInfoWindowLongClickListener) {
+        com.google.android.gms.maps.GoogleMap.OnInfoWindowLongClickListener realOnInfoWindowLongClickListener = null;
+        if (onInfoWindowLongClickListener != null) {
+            realOnInfoWindowLongClickListener = new DelegatingOnInfoWindowLongClickListener(onInfoWindowLongClickListener);
+        }
+        real.setOnInfoWindowLongClickListener(realOnInfoWindowLongClickListener);
+    }
+
+    @Override
+    public void setOnPolygonClickListener(OnPolygonClickListener onPolygonClickListener) {
+        com.google.android.gms.maps.GoogleMap.OnPolygonClickListener realOnPolygonClickListener = null;
+        if (onPolygonClickListener != null) {
+            realOnPolygonClickListener = new DelegatingOnPolygonClickListener(onPolygonClickListener);
+        }
+        real.setOnPolygonClickListener(realOnPolygonClickListener);
+    }
+
+    @Override
     public void setOnMapClickListener(OnMapClickListener onMapClickListener) {
         real.setOnMapClickListener(onMapClickListener);
     }
@@ -428,6 +446,34 @@ class DelegatingGoogleMap implements GoogleMap {
         @Override
         public void onInfoWindowClick(com.google.android.gms.maps.model.Marker marker) {
             onInfoWindowClickListener.onInfoWindowClick(markerManager.map(marker));
+        }
+    }
+
+    private class DelegatingOnInfoWindowLongClickListener implements com.google.android.gms.maps.GoogleMap.OnInfoWindowLongClickListener {
+
+        private final OnInfoWindowLongClickListener onInfoWindowLongClickListener;
+
+        public DelegatingOnInfoWindowLongClickListener(OnInfoWindowLongClickListener onInfoWindowLongClickListener) {
+            this.onInfoWindowLongClickListener = onInfoWindowLongClickListener;
+        }
+
+        @Override
+        public void onInfoWindowLongClick(com.google.android.gms.maps.model.Marker marker) {
+            onInfoWindowLongClickListener.onInfoWindowLongClick(markerManager.map(marker));
+        }
+    }
+
+    private class DelegatingOnPolygonClickListener implements com.google.android.gms.maps.GoogleMap.OnPolygonClickListener {
+
+        private final OnPolygonClickListener onPolygonClickListener;
+
+        public DelegatingOnPolygonClickListener(OnPolygonClickListener onPolygonClickListener) {
+            this.onPolygonClickListener = onPolygonClickListener;
+        }
+
+        @Override
+        public void onPolygonClick(com.google.android.gms.maps.model.Polygon polygon) {
+            onPolygonClickListener.onPolygonClick(polygon);
         }
     }
 

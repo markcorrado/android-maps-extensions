@@ -24,9 +24,11 @@ import com.google.android.gms.maps.GoogleMap.CancelableCallback;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.GoogleMap.OnPolygonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
@@ -108,6 +110,10 @@ interface IGoogleMap {
     void setOnCameraChangeListener(OnCameraChangeListener listener);
 
     void setOnInfoWindowClickListener(OnInfoWindowClickListener listener);
+
+    void setOnInfoWindowLongClickListener(OnInfoWindowLongClickListener listener);
+
+    void setOnPolygonClickListener(OnPolygonClickListener listener);
 
     void setOnMapClickListener(OnMapClickListener listener);
 

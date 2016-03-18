@@ -90,6 +90,11 @@ class DelegatingPolygon implements Polygon {
     }
 
     @Override
+    public void setClickable(boolean clickable) {
+        real.setClickable(clickable);
+    }
+
+    @Override
     public void setData(Object data) {
         this.data = data;
     }
