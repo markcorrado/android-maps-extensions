@@ -44,6 +44,8 @@ public interface Polygon {
 
     void remove();
 
+    void setClickable(boolean clickable);
+
     void setData(Object data);
 
     void setFillColor(int fillColor);

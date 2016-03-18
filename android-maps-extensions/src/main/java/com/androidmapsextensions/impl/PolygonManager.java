@@ -58,4 +58,8 @@ class PolygonManager {
     public void onRemove(com.google.android.gms.maps.model.Polygon real) {
         polygons.remove(real);
     }
+
+    public Polygon map(com.google.android.gms.maps.model.Polygon polygon) {
+        return polygons.get(polygon);
+    }
 }
